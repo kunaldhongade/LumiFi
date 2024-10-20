@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { isConnected, requestAccess } from "../hooks/useFreighter";
 
 export default function ConnectWallet() {
@@ -8,7 +8,7 @@ export default function ConnectWallet() {
   useEffect(() => {
     const connect = async () => {
       const connection = await isConnected();
-      if (connection.isAllowed) {
+      if (connection) {
         const { address } = await requestAccess();
         setPublicKey(address);
         setConnected(true);
@@ -18,14 +18,11 @@ export default function ConnectWallet() {
   }, []);
 
   return (
-    <div>
-      <button
-        className="btn btn-primary mb-4"
-        onClick={() => setConnected(true)}
-      >
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <button className="ant-btn ant-btn-primary" onClick={() => setConnected(true)}>
         {connected ? "Connected" : "Connect Freighter"}
       </button>
-      <p>Public Key: {publicKey ?? "Not connected"}</p>
+      <p style={{ marginTop: "10px" }}>Public Key: {publicKey ?? "Not connected"}</p>
     </div>
   );
 }
