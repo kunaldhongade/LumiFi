@@ -6,7 +6,7 @@ pub fn read_balance(e: &Env, addr: Address) -> i128 {
     if let Some(balance) = e.storage().persistent().get::<DataKey, i128>(&key) {
         e.storage()
             .persistent()
-            .extend_ttl(&key, BALANCE_LIFETIME_THRESHOLD, BALANCE_BUMP_AMOUNT);
+            .extend_ttl(&key, BALANCE_LIFETIME_THRESHOLD.try_into().unwrap(), BALANCE_BUMP_AMOUNT.try_into().unwrap());
         balance
     } else {
         0
@@ -18,7 +18,7 @@ fn write_balance(e: &Env, addr: Address, amount: i128) {
     e.storage().persistent().set(&key, &amount);
     e.storage()
         .persistent()
-        .extend_ttl(&key, BALANCE_LIFETIME_THRESHOLD, BALANCE_BUMP_AMOUNT);
+        .extend_ttl(&key, BALANCE_LIFETIME_THRESHOLD.try_into().unwrap(), BALANCE_BUMP_AMOUNT.try_into().unwrap());
 }
 
 pub fn receive_balance(e: &Env, addr: Address, amount: i128) {

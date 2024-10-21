@@ -23,13 +23,17 @@ CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD -->
 
 ## 🎉 **Deployment Successful!**
 
-ℹ️ **Transaction Hash**: `7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f`
+ℹ️ **Using wasm hash**: `c32e7a32df72d9f2a9ed55320ff312d292e2ddcceb67f3cac51e2697da5a3449`
 
-🔗 [View transaction on Stellar Expert](https://stellar.expert/explorer/testnet/tx/7ac35f5a1a7d4b26e61afb4363be335ff600564f1513b842862cf66d9743d12f)
+🌎 **Submitting deploy transaction…**
 
-🔗 [Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD)
+ℹ️ **Transaction Hash**: `1ce742c2f5501497d31cc78884d024f61c012b28a246832d38b9d213ec37d0b1`
 
-✅ **Deployed Contract ID**: `CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD`
+🔗 [View transaction on Stellar Expert](https://stellar.expert/explorer/testnet/tx/1ce742c2f5501497d31cc78884d024f61c012b28a246832d38b9d213ec37d0b1)
+
+🔗 [Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CBSZTRZYLMZI4PMU34MBO5KRCBQ3P4CSLIPV3QSHUITO7TTXFYOVK3QO)
+
+✅ **Deployed Contract ID**: `CBSZTRZYLMZI4PMU34MBO5KRCBQ3P4CSLIPV3QSHUITO7TTXFYOVK3QO`
 
 ## 📖 **Table of Contents**
 

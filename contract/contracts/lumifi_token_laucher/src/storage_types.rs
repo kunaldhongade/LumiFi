@@ -25,6 +25,7 @@ pub struct AllowanceValue {
 pub enum DataKey {
     Allowance(AllowanceDataKey),
     Balance(Address),
-    State(Address),
     Admin,
+    ICO(Address), // Stores ICO details
+    LiquidityPool(Address), // Store liquidity pool state
 }

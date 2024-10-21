@@ -1,18 +1,14 @@
 use soroban_sdk::{Address, Env};
-
 use crate::storage_types::DataKey;
 
 pub fn has_administrator(e: &Env) -> bool {
-    let key = DataKey::Admin;
-    e.storage().instance().has(&key)
+    e.storage().instance().has(&DataKey::Admin)
 }
 
 pub fn read_administrator(e: &Env) -> Address {
-    let key = DataKey::Admin;
-    e.storage().instance().get(&key).unwrap()
+    e.storage().instance().get(&DataKey::Admin).unwrap()
 }
 
 pub fn write_administrator(e: &Env, id: &Address) {
-    let key = DataKey::Admin;
-    e.storage().instance().set(&key, id);
+    e.storage().instance().set(&DataKey::Admin, id);
 }
