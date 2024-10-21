@@ -3,7 +3,7 @@ import { BASE_FEE, Contract, Networks, SorobanRpc, TransactionBuilder, xdr } fro
 
 // Replace with your Soroban RPC URL and contract ID
 const rpcUrl = "https://soroban-testnet.stellar.org";
-const contractId = "CDICWJS6IJGQEJ7TSWXSHPVGG5ZMCMSI3AF643DNNAKD6AT7HJMYNQQD";
+const contractId = "CAF2KXKKIGUV5RIUYKTPJKYSZT5QSOGZ5DDTHOV2AE4ESVMCVJ3BSKSH";
 
 // Check if Freighter is connected and allowed
 export async function isConnected() {
@@ -76,4 +76,40 @@ export async function transferTokens(to: string, amount: number) {
 
   return sendTransaction(signedTx.signedTxXdr);
 }
+
+export async function createToken(
+  owner: string,
+  name: string,
+  symbol: string,
+  decimals: number,
+  initialSupply: number,
+) {
+  const accessObj = await requestAccess();
+  const provider = new SorobanRpc.Server(rpcUrl);
+  const contract = new Contract(contractId);
+  const sourceAccount = await provider.getAccount(accessObj.address);
+
+  const tx = new TransactionBuilder(sourceAccount, {
+    fee: BASE_FEE,
+    networkPassphrase: Networks.TESTNET,
+  })
+    .addOperation(
+      contract.call(
+        "initialize",
+        xdr.ScVal.scvString(owner),
+        xdr.ScVal.scvI32(decimals),
+        xdr.ScVal.scvString(name),
+        xdr.ScVal.scvString(symbol),
+        xdr.ScVal.scvI32(initialSupply),
+      ),
+    )
+    .setTimeout(30)
+    .build();
+
+  const signedTx = await signTransaction(tx.toXDR(), {
+    networkPassphrase: Networks.TESTNET,
+  });
+  await provider.sendTransaction(TransactionBuilder.fromXDR(signedTx.signedTxXdr, Networks.TESTNET));
+}
+
 export { requestAccess };
